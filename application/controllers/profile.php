@@ -9,20 +9,35 @@ class Profile extends MY_Controller {
 	{
 		if ( ! $id) {
 			$id = $this->control->is_logged_in();
+			$data['own_page'] = TRUE;
+		} else {
+			$data['own_page'] = FALSE;
 		}
 		$query = $this->db->get_where('users', array('id' => $id));
-		
+		if ( ! $this->control->get_username($id) )
+		{
+			echo 'INVALID ID';
+			die();
+		}
 		$user = $query->row();
 		$data['username'] = $user->username;
 		$data['email'] = $user->email;
-		$data['user_id'] = $id;
+		$data['user_id'] = $user->id;
+		$query = $this->db->get_where('followers', array('follower_id' => $this->control->is_logged_in(), 
+															'followed_id' => $id));
+		if ($query->num_rows() > 0)
+		{
+			$data['following'] = TRUE;
+		} else {
+			$data['following'] = FALSE;
+		}
 		$this->load->view('profile', $data);
 	}
 	
 	public function follow($user_id)
 	{
 		$this->db->insert('followers', array('follower_id' => $this->control->is_logged_in(),
-											'follwed_id' => $user_id)
+											'followed_id' => $user_id)
 						);
 	}
 	
