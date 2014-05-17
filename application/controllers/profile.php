@@ -6,6 +6,21 @@ class Profile extends MY_Controller {
 	{
 		
 	}
+	
+	public function follow($user_id)
+	{
+		$this->db->insert('followers', array('follower_id' => $this->control->is_logged_in(),
+											'follwed_id' => $user_id)
+						);
+	}
+	
+	public function unfollow($user_id)
+	{
+		$this->db->delete('followers', array('follower_id' => $this->control->is_logged_in(),
+											'followed_id' => $user_id)
+						);
+	}
+	
 	public function add_interest()
 	{
 		$this->load->helper('form');
@@ -30,6 +45,7 @@ class Profile extends MY_Controller {
 										);
 		}
 	}
+	
 }
 
 /* End of file welcome.php */

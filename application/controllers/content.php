@@ -2,10 +2,42 @@
 
 class Content extends MY_Controller {
 	
-	public function _remap()
+	public function index()
 	{
-		$this->add_post();
+		$follower_id = $this->control->is_logged_in();
+		
+		$query = $this->db->get_where('followers', array('follower_id' => $follower_id));
+		
+		$follows = array();
+		
+		if ($query->num_rows() > 0) {
+			 foreach ($query->result() as $row) {
+				array_push($follows, $row->followed_id);
+			}
+		}
+		
+		foreach($follows as $followed_id) {
+			
+			//Display ideas
+			$query = $this->db->get_where('ideas', array('user_id' => $followed_id));
+			if ($query->num_rows() > 0) {
+				foreach ($query->result() as $row) {
+					echo $row->title;
+					echo $row->description;
+				}
+			}
+			
+			$query = $this->db->get_where('ads', array('user_id' => $followed_id));
+			if ($query->num_rows() > 0) {
+				foreach ($query->result() as $row) {
+					echo $row->title;
+					echo $row->description;
+					echo '<img src="/share_out/uploads/'.$row->picture.'" width="100px" height="100px" />';
+				}
+			}
+		}	
 	}
+	
 	public function add_post()
 	{
 		$this->load->helper('form');
