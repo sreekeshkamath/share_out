@@ -2,9 +2,21 @@
 
 class Profile extends MY_Controller {
 	
-	public function index()
+	
+	
+	
+	public function index($id=FALSE)
 	{
+		if ( ! $id) {
+			$id = $this->control->is_logged_in();
+		}
+		$query = $this->db->get_where('users', array('id' => $id));
 		
+		$user = $query->row();
+		$data['username'] = $user->username;
+		$data['email'] = $user->email;
+		$data['user_id'] = $id;
+		$this->load->view('profile', $data);
 	}
 	
 	public function follow($user_id)
@@ -41,7 +53,7 @@ class Profile extends MY_Controller {
 		else
 		{
 			$this->auth_model->register($this->form_validation->set_value('interest'),
-										$this->control->get_user_id();
+										$this->control->get_user_id()
 										);
 		}
 	}
