@@ -19,7 +19,7 @@ class Welcome extends CI_Controller {
 	 */
 	public function index()
 	{
-		echo 'Welcome, '.gethostname().'('.$this->input->server('REMOTE_ADDR').')';
+		
 		
 		
 	}
