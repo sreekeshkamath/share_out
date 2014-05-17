@@ -16,11 +16,8 @@
 <?php echo validation_errors(); ?>
 <?php echo form_open('content/add_post'), array('class'=>'post_anything') ?>
 
-Choose what you are posting...
-<select value="post_anything">
- <option value="option1">Advertisement</option>
- <option value="option2">Idea</option>
-</select>
+Go ahead post anything....
+
 <br>
 Title:
 <input type="text" name="title" value="<?php echo set_value('title'); ?>"/>
@@ -28,6 +25,9 @@ Title:
 Description:
 <textarea name="description" value="<?php echo set_value('description');?>" cols=50 rows=5 placeholder="Please give a description..."></textarea>
 <br>
+
+
+
 <input type="submit" value="Post"/>
 </form>
 </body>
