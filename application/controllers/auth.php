@@ -19,10 +19,8 @@ class Auth extends MY_Controller {
 		$data['title'] = 'Login';
 		$data['hide_register'] = TRUE;
 		
-		$this->form_validation->set_rules('username', 'Username', 'trim|required|min_length[5]|max_length[12]|callback__login_check');
+		$this->form_validation->set_rules('username', 'Username', 'trim|required|min_length[5]|max_length[12]');
 		$this->form_validation->set_rules('password', 'Password', 'trim|required|md5');
-		
-		$this->form_validation->set_message('_login_check', 'Invalid Username/Password');
 		
 		if ($this->form_validation->run() === FALSE)
 		{
@@ -31,21 +29,21 @@ class Auth extends MY_Controller {
 		}
 		else
 		{
-			echo 'Success';
+			if ($this->control->do_login($this->form_validation->set_value('username'),
+									$this->form_validation->set_value('password')
+									)
+				)
+			{
+				echo 'Success';
+			} else {
+				$data['error'] = 'Invalid Username/Password';
+				$this->load->view('register_form', $data);
+			}
+		
 		}
 		
 	}
-	
-	public function _login_check()
-	{
-		if ($this->auth_model->check_creds($this->form_validation->set_value('username'),
-											$this->form_validation->set_value('password')
-											)) {
-			return TRUE;
-		} else {
-			return FALSE;
-		}
-	}
+
 	
 	public function register()
 	{

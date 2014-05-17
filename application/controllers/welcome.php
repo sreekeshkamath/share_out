@@ -20,7 +20,7 @@ class Welcome extends CI_Controller {
 	public function index()
 	{
 		
-		
+		echo $this->control->get_username();
 		
 	}
 }

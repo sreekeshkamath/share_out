@@ -5,9 +5,11 @@ class  MY_Controller  extends  CI_Controller  {
 	{
 		parent::__construct();
 		$this->load->library('control');
-		if ($this->control->check_login() === FALSE) {
+		
+		if ( ! $this->control->is_logged_in() &&  ! $this->uri->segment(2) == 'login') {
 			redirect(site_url("auth/login"));
 		}
+		
 		
 		
 	}

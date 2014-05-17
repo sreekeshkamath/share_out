@@ -1,6 +1,7 @@
 <?php echo form_open('auth/login', array('class' => 'login_label')) ?>
 
 <?php echo validation_errors(); ?>
+<?php echo (isset($error)) ? $error:''; ?>
 
 <?php if ( ! isset($hide_login)) { ?>
 	<h2>Log In:</h2>

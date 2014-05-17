@@ -19,9 +19,11 @@ class Auth_model extends CI_Model {
 
 		if ($query->num_rows() > 0)
 		{
-			return TRUE;
+			$user = $query->row(); 
+			return $user->id;
 		}
 		return FALSE;
 	}
+	
 }
 
