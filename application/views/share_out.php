@@ -1,16 +1,3 @@
-<html>
-<body>
-
-<h1>ShareOut!</h1>
-
-<nav>
-  <ul>
-      <li><a href="friends_post.php">Friends Post</a>
-	  <li><a href="interests_post.php">Interests Post</a>
-	  <li><a href="share_out.php">ShareOut</a>
-	  <li><a href="#">Profile</a>
-	  </ul>
-</nav>
 <h2>Go ahead post anything...</h2>
 
 <?php echo validation_errors(); ?>
@@ -31,5 +18,4 @@ Description:<br />
 
 <input type="submit" value="Post"/>
 </form>
-</body>
-</html>
+
