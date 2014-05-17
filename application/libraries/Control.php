@@ -32,6 +32,11 @@ class Control {
 		
 	}
 	
+	public function redirectx($origin_url=FALSE, $dest_url=FALSE)
+	{
+		// TODO
+	}
+	
 	public function get_username($user_id=FALSE)
 	{
 		if ( ! $user_id) $user_id = $this->is_logged_in();

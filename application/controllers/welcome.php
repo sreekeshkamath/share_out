@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Welcome extends CI_Controller {
+class Welcome extends MY_Controller {
 
 	/**
 	 * Index Page for this controller.
@@ -20,7 +20,8 @@ class Welcome extends CI_Controller {
 	public function index()
 	{
 		
-		echo $this->control->get_username();
+		echo 'Welcome, '.$this->control->get_username();
+		//~ echo ($this->control->is_logged_in()) ? 'Y':'N';
 		
 	}
 }

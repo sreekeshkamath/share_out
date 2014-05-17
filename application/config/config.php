@@ -14,7 +14,7 @@
 | path to your installation.
 |
 */
-$config['base_url']	= 'http://localhost/share_out/';
+$config['base_url']	= 'http://192.168.100.61/share_out/';
 
 /*
 |--------------------------------------------------------------------------

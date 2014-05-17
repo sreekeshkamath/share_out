@@ -6,8 +6,8 @@ class  MY_Controller  extends  CI_Controller  {
 		parent::__construct();
 		$this->load->library('control');
 		
-		if ( ! $this->control->is_logged_in() &&  ! $this->uri->segment(2) == 'login') {
-			redirect(site_url("auth/login"));
+		if ( ($this->control->is_logged_in() === FALSE) &&  ($this->uri->segment(1) != 'auth')) {
+			redirect(site_url("auth/"));
 		}
 		
 		
