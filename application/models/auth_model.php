@@ -15,8 +15,13 @@ class Auth_model extends CI_Model {
 	
 	public function check_creds($username, $password)
 	{
-		
+		$query = $this->db->get_where('users', array('username' => $username, 'password' => $password));
+
+		if ($query->num_rows() > 0)
+		{
+			return TRUE;
+		}
+		return FALSE;
 	}
-	
 }
 
