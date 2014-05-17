@@ -2,9 +2,9 @@
 
 class Content extends MY_Controller {
 	
-	public function index()
+	public function _remap()
 	{
-		
+		$this->add_post();
 	}
 	public function add_post()
 	{
@@ -26,7 +26,7 @@ class Content extends MY_Controller {
 			$this->load->view('share_out', $data);
 		}
 		else
-		{
+		{http://192.168.100.61/share_out/index.php/content/do_upload
 			$info = array('title' => $this->form_validation->set_value('title'),
 						'description' => $this->form_validation->set_value('description'),
 						'user_id' => $this->control->is_logged_in()
@@ -37,8 +37,7 @@ class Content extends MY_Controller {
 				$info['picture'] = uniqid().'.jpg';
 				$this->db->insert('ads', $info);
 				$this->session->set_userdata('filename', $info['picture']);
-				echo 'GOD';
-				//~ $this->load->view('upload_form');
+				$this->load->view('upload_form', array('error' => ''));
 			} else if ($this->form_validation->set_value('type') == '2') {
 				$this->db->insert('ideas', $info);
 				echo 'Successfully posted new idea.<br />';
@@ -48,8 +47,10 @@ class Content extends MY_Controller {
 	
 	public function do_upload()
 	{
-		
-		echo $this->session->userdata('filename');
+		if ( ! $this->session->userdata('filename')) {
+			echo 'No direct script access';
+			die();
+		}
 		$this->load->helper('form');
 		
 		$config['upload_path'] = './uploads/';
@@ -72,6 +73,7 @@ class Content extends MY_Controller {
 			$data = array('upload_data' => $this->upload->data());
 
 			$this->session->unset_userdata('filename');
+			
 			echo 'Successfully added new ad';
 		}
 		
@@ -82,7 +84,7 @@ class Content extends MY_Controller {
 		if ($str == 0) {
 			return FALSE;
 		} else {
-			return TRUE;
+			return $str;
 		}
 	}
 }

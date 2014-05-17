@@ -14,7 +14,7 @@
 <h2>Go ahead post anything...</h2>
 
 <?php echo validation_errors(); ?>
-<?php echo form_open_multipart('content/do_upload', array('class'=>'post_anything')) ?>
+<?php echo form_open('content/add_post', array('class'=>'post_anything')) ?>
 
 <select name="type">
 	<option value="0" selected="selected">Select a type</option>
