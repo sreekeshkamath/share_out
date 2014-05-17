@@ -50,5 +50,19 @@ a {
 	 border-right: solid 1px #585858; 
  
  }
+ .upper {
+  
+          width:970px;
  
+ }
+ .profile {
+ 
+          width:"950px";
+		  text-align:center;
+ }
+.profile_details {
+	 text-align:left;
+	 padding-right: 140px;
+     	 
+	}
  
