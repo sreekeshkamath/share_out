@@ -48,21 +48,70 @@ a {
 	 padding-right: 10px;
 	 padding-left: 10px;
 	 border-right: solid 1px #585858; 
- 
+     
  }
+ 
+ nav li:hover {
+	         box-shadow: rgba()
+ 
+ } 
  .upper {
   
           width:970px;
+		  margin: auto auto;
  
  }
- .profile {
+ .profile_picture{
  
-          width:"950px";
+          width:980px;
 		  text-align:center;
+		  padding-bottom: 10px;
+		  border-bottom: solid 2px blue;
  }
 .profile_details {
-	 text-align:left;
-	 padding-right: 140px;
+	 float:left;
+	 padding-left: 140px;
+	 padding-top: 10px;
+	 padding-bottom:10px;
+	 font-size: 1.2em;
      	 
 	}
  
+ .anypost {
+     width: 980px;
+	}
+.followers {
+  float:right;
+}	
+.buttonb1 {
+		  float: right;
+          margin-right:140px;
+		  margin-top: 15px;
+		  padding: 10px;
+		  display: inline-block;
+		  border: solid 1px white;
+		  background: linear-gradient(#c8c8c8,#c8c8c8);
+		  box-shadow: rgba(0,0,0,0.25) 0 2px 2px 0;
+		  opacity: 0.5;
+
+}
+
+.buttonb2 {
+		  float: right;
+          margin-right:5px;
+		  margin-top: 15px;
+		  padding: 10px;
+		  display: inline-block;
+		  border: solid 1px white;
+		  background: linear-gradient(#c8c8c8,#c8c8c8);
+		  box-shadow: rgba(0,0,0,0.25) 0 2px 2px 0;
+		  opacity: 0.5;
+
+}
+.buttonb1:hover {
+				opacity:1;
+}
+
+.buttonb2:hover {
+				 opacity:1;
+}
